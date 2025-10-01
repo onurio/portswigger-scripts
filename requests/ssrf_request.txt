@@ -1,0 +1,20 @@
+POST /workshop/api/merchant/contact_mechanic HTTP/1.1
+Host: localhost:8888
+Content-Length: 214
+sec-ch-ua-platform: "macOS"
+Authorization: Bearer eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJvbXJpbnVyaUBnbWFpbC5jb20iLCJpYXQiOjE3NTI3NzAxODcsImV4cCI6MTc1MzM3NDk4Nywicm9sZSI6InVzZXIifQ.PgtHLMYqS9cSL_sUr9GcVaZzJntD4efh4zM2ppvKqRRv9CBwCsWdnIct39trp4fPTSLy8_uAZm4b7hSE_-4bgcxgmFxJ4d4bP6rjuQdeBGgMpmqhlvgDGrlxfYpKDFIsmpEEHvqOVud58Sv1zrr3xpSoVWwYtJX8uBa1yCS-wjbxO_Chjo79EUB8zG_22Po3HZyooTIfi0ce3x0UWIg7CKUYltVa85izjsofyI9TesyxnrB1gEQylpZeZjVnPwC4bIalWdWIep8ecu8H2BjD0Dt6aQ2RyPAIT8mRpK5xh6LUgUdxzCxaZ3M74ZLXgw8p8lp0AgqO7Fl7Qn80UXmqSw
+Accept-Language: en-US,en;q=0.9
+sec-ch-ua: "Not)A;Brand";v="8", "Chromium";v="138"
+Content-Type: application/json
+sec-ch-ua-mobile: ?0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36
+Accept: */*
+Origin: http://localhost:8888
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: cors
+Sec-Fetch-Dest: empty
+Referer: http://localhost:8888/contact-mechanic?VIN=6ZKHK72UWQZ499390
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+
+{"mechanic_code":"TRAC_JHN","problem_details":"sdfgsdfg","vin":"6ZKHK72UWQZ499390","mechanic_api":"http://localhost:8888/FUZZ","repeat_request_if_failed":false,"number_of_repeats":1}

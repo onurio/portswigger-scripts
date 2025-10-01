@@ -39,3 +39,11 @@ Thumbs.db
 htmlcov/
 .tox/
 .hypothesis/
+
+# Large external tools and wordlists
+SecLists/
+jwt_tool/
+
+# Large test results
+requests/delete_results.txt
+*_results.txt

